@@ -1,0 +1,86 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen SQL</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "pdf-lib": "https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"
+        }
+    }
+    </script>
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M4 5v14h16V5H4zm14 12H6V7h12v10zm-8-3h4v2h-4v-2zm0-3h4v2h-4v-2zm0-3h4v2h-4v-2zm-3 6h2v2H7v-2zm0-3h2v2H7v-2zm0-3h2v2H7v-2z"/>
+                </svg>
+            </div>
+            <h1>Examen SQL</h1>
+        </div>
+        <div class="profile-section">
+            <div class="profile-info">
+                <div class="profile-avatar"></div>
+                <div>
+                    <div class="profile-name"></div>
+                    <div id="studentId" class="student-number"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal-overlay hidden">
+        <div class="profile-modal hidden">
+            <h2>Modifier le profil</h2>
+            <form class="profile-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentIdInput">Numéro étudiant</label>
+                    <input type="text" id="studentIdInput" placeholder="Ex: 12345" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" id="cancelProfile">Annuler</button>
+                    <button type="submit" id="saveProfile">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section id="studentSection">
+            <div class="exam-preview">
+                <div class="exam-header">
+                    <h2 class="exam-title">Votre examen</h2>
+                    <h2 class="grade-title">Votre note: <span class="grade-value">--/20</span></h2>
+                </div>
+                <div id="pdfPreviewContainer">
+                    <iframe id="pdfPreview" width="100%" height="500px"></iframe>
+                    <button id="downloadExam" class="download-button">Télécharger l'examen</button>
+                </div>
+            </div>
+            
+            <div class="upload-zone">
+                <h3>Soumettre votre réponse</h3>
+                <input type="file" id="answerUpload" accept=".pdf">
+            </div>
+            
+            <div class="result-zone hidden">
+                <h3>Résultat</h3>
+                <div id="score"></div>
+                <div id="feedback"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

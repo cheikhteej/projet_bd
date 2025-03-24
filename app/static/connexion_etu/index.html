@@ -1,0 +1,32 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Examen SQL</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="login.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M4 5v14h16V5H4zm14 12H6V7h12v10zm-8-3h4v2h-4v-2zm0-3h4v2h-4v-2zm0-3h4v2h-4v-2zm-3 6h2v2H7v-2zm0-3h2v2H7v-2zm0-3h2v2H7v-2z"/>
+                </svg>
+            </div>
+            <h1>Connexion Étudiant</h1>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="studentId">Email ou numéro étudiant</label>
+                    <input type="text" id="studentId" placeholder="Ex: 12345 ou email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div id="loginError" class="error-message hidden"></div>
+                <button type="submit" class="login-button">Se connecter</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

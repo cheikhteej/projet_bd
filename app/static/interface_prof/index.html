@@ -1,0 +1,95 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Interface Professeur - SGBD</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "pdf-lib": "https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js",
+            "ace-builds": "https://cdn.jsdelivr.net/npm/ace-builds@1.24.1/src-min-noconflict/ace.js"
+        }
+    }
+    </script>
+    <script type="module" src="teacher.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M4 5v14h16V5H4zm14 12H6V7h12v10zm-8-3h4v2h-4v-2zm0-3h4v2h-4v-2zm0-3h4v2h-4v-2zm-3 6h2v2H7v-2zm0-3h2v2H7v-2zm0-3h2v2H7v-2z"/>
+                </svg>
+            </div>
+            <h1>Interface Professeur SGBD</h1>
+        </div>
+        <div class="profile-section">
+            <div class="profile-info">
+                <div class="profile-avatar"></div>
+                <div>
+                    <div class="profile-name"></div>
+                    <div id="teacherId"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="examManagement">
+            <h2>Gestion des Examens</h2>
+            <div class="exam-upload">
+                <h3>Soumettre un nouvel examen</h3>
+                <div class="upload-zone">
+                    <input type="file" id="examUpload" accept=".pdf">
+                </div>
+            </div>
+
+            <div class="correction-setup">
+                <h3>Configuration de la correction</h3>
+                <div class="correction-tabs">
+                    <button class="tab-button active" data-tab="sqlSolutions">Solutions SQL</button>
+                    <button class="tab-button" data-tab="aiCorrection">Correction IA</button>
+                </div>
+
+                <div id="sqlSolutions" class="tab-content active">
+                    <div class="solution-list">
+                        <div class="solution-item">
+                            <h4>Question 1</h4>
+                            <div id="editor1" class="sql-editor"></div>
+                            <button class="add-example">Ajouter un exemple</button>
+                        </div>
+                        <button id="addQuestion" class="secondary-button">+ Ajouter une question</button>
+                    </div>
+                </div>
+
+                <div id="aiCorrection" class="tab-content">
+                    <div class="ai-settings">
+                        <h4>Paramètres de correction IA</h4>
+                        <div class="form-group">
+                            <label for="gradingCriteria">Critères de notation</label>
+                            <textarea id="gradingCriteria" rows="4" placeholder="Définir les critères de notation..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="aiThreshold">Seuil de confiance IA</label>
+                            <input type="range" id="aiThreshold" min="0" max="100" value="80">
+                            <span id="thresholdValue">80%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-preview">
+                <h3>Aperçu de l'examen</h3>
+                <div id="pdfPreviewContainer">
+                    <iframe id="pdfPreview" width="100%" height="500px"></iframe>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="saveExam" class="primary-button">Enregistrer l'examen</button>
+                <button id="previewCorrection" class="secondary-button">Tester la correction</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
